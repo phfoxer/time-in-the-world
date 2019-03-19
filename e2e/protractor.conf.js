@@ -9,7 +9,10 @@ exports.config = {
     './src/**/*.e2e-spec.ts'
   ],
   capabilities: {
-    'browserName': 'chrome'
+    'browserName': 'chrome',
+    chromeOptions: {
+      args: ["--headless", "--disable-gpu", "window-size=1920, 1080", "--disable-browser-side-navigation"]
+    }
   },
   directConnect: true,
   baseUrl: 'http://localhost:3000/twtop',
@@ -17,7 +20,7 @@ exports.config = {
   jasmineNodeOpts: {
     showColors: true,
     defaultTimeoutInterval: 30000,
-    print: function() {}
+    print: function () { }
   },
   onPrepare() {
     require('ts-node').register({
