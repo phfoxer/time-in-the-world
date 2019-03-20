@@ -46,7 +46,7 @@ describe('NewsService', () => {
     const section = 'science';
     service.getTheGuardian(section).subscribe(() => { });
     // Test query string
-    const query = '?api-key=' + environment.keys.theguardian + '&show-fields=trail-text,byline';
+    const query = '?api-key=' + environment.keys.theguardian + '&show-fields=trail-text,byline,body,thumbnail&page-size=10';
     const request = httpMock.expectOne(service.theguardianapis + section + query);
     // Test request type
     expect(request.request.method).toBe('GET');
@@ -56,7 +56,7 @@ describe('NewsService', () => {
     const section = 'world';
     service.getTheGuardian(section).subscribe(() => { });
     // Test query string
-    const query = '?api-key=' + environment.keys.theguardian + '&show-fields=trail-text,byline';
+    const query = '?api-key=' + environment.keys.theguardian + '&show-fields=trail-text,byline,body,thumbnail&page-size=10';
     const request = httpMock.expectOne(service.theguardianapis + section + query);
     // Test request type
     expect(request.request.method).toBe('GET');

@@ -1,23 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { NewsService } from './service/news.service';
-import { IArticle } from './interface/article.interface';
+import { ISection } from './interface/sections.interface';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
-  providers: [NewsService]
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'twtop';
-  constructor(private newsService: NewsService) {
-
-  }
+  title = 'The PH News';
+  sections: ISection[];
+  constructor() { }
 
   ngOnInit() {
-    this.newsService.getNews('science').then((result: IArticle[]) => {
-     console.log(result);
-    });
+    this.sections = environment.sections;
   }
 
 

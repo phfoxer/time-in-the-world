@@ -1,14 +1,22 @@
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
-// theguardian &show-fields=trail-text
+// https://open-platform.theguardian.com/documentation/item
 // newyorktimes ?api-key=cMPElXDL9wICXmKqiPlt5QdrlxlMzCmn
 export const environment = {
   production: false,
   keys: {
     theguardian: '77d3b102-9cc8-4ae3-b3f3-246dd91cfbc6',
     newyorktimes: 'cMPElXDL9wICXmKqiPlt5QdrlxlMzCmn'
-  }
+  },
+  sections: [{
+    name: 'Science & Tecnology',
+    sectionId: 'science'
+  },
+  {
+    name: 'World',
+    sectionId: 'world'
+  }]
 };
 
 /*
