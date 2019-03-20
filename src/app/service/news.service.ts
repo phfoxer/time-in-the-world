@@ -29,7 +29,7 @@ export class NewsService {
         result[0].map((guardian: any) => {
           list.push({
             title: guardian.webTitle,
-            text: guardian.body.trailText,
+            text: guardian.fields.trailText,
             thumbnail: (guardian.fields.thumbnail) ? guardian.fields.thumbnail : null,
             image: (guardian.fields.thumbnail) ? guardian.fields.thumbnail : null,
             date: guardian.webPublicationDate,
@@ -42,8 +42,8 @@ export class NewsService {
           list.push({
             title: newyorktimes.title,
             text: newyorktimes.abstract,
-            thumbnail: (newyorktimes.multimedia.length > 0) ? newyorktimes.multimedia[2].thumbnail.url : null,
-            image: (newyorktimes.multimedia.length > 0) ? newyorktimes.multimedia[3].thumbnail.url : null,
+            thumbnail: (newyorktimes.multimedia.length > 0) ? newyorktimes.multimedia[2].url : null,
+            image: (newyorktimes.multimedia.length > 0) ? newyorktimes.multimedia[3].url : null,
             date: newyorktimes.published_date,
             section: newyorktimes.section,
             author: newyorktimes.byline

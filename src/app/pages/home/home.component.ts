@@ -11,15 +11,16 @@ import { IArticle } from 'src/app/interface/article.interface';
   providers: [NewsService]
 })
 export class HomeComponent implements OnInit {
-  news$: IArticle[] = [];
+  articles: IArticle[] = [];
   constructor(private newsService: NewsService) { }
 
   ngOnInit() {
     const sections: ISection[] = environment.sections;
     sections.forEach((section: ISection) => {
       this.newsService.getNews(section.sectionId, '5').subscribe(article =>
-        article.map(r => this.news$.push(r))
+        article.map(r => this.articles.push(r))
       );
     });
+    console.log(this.articles)
   }
 }
