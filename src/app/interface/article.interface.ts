@@ -1,6 +1,7 @@
 export interface IArticle {
-    text: string,
-    title: string,
-    date: Date,
-    section: string
+    text: string;
+    title: string;
+    date: Date;
+    section: string;
+    author: string;
 }

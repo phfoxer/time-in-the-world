@@ -5,9 +5,10 @@
 // newyorktimes ?api-key=cMPElXDL9wICXmKqiPlt5QdrlxlMzCmn
 export const environment = {
   production: false,
-  theguardian: '77d3b102-9cc8-4ae3-b3f3-246dd91cfbc6',
-  newyorktimes: 'cMPElXDL9wICXmKqiPlt5QdrlxlMzCmn',
-  gategories: ['science', 'world']
+  keys: {
+    theguardian: '77d3b102-9cc8-4ae3-b3f3-246dd91cfbc6',
+    newyorktimes: 'cMPElXDL9wICXmKqiPlt5QdrlxlMzCmn'
+  }
 };
 
 /*

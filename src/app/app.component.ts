@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NewsService } from './service/news.service';
+import { IArticle } from './interface/article.interface';
 
 @Component({
   selector: 'app-root',
@@ -14,8 +15,8 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.newsService.getNews('science').subscribe((result: Array<object>) => {
-     // console.log(result)
+    this.newsService.getNews('science').then((result: IArticle[]) => {
+     console.log(result);
     });
   }
 

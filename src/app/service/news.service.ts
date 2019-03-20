@@ -9,8 +9,8 @@ import { IArticle } from '../interface/article.interface';
   providedIn: 'root'
 })
 export class NewsService {
-  private theguardianapis: string;
-  private newyorktimesapis: string;
+  public theguardianapis: string;
+  public newyorktimesapis: string;
   constructor(private http: HttpClient) {
     this.theguardianapis = 'https://content.guardianapis.com/';
     this.newyorktimesapis = 'https://api.nytimes.com/svc/news/v3/content/nyt/';
@@ -18,20 +18,21 @@ export class NewsService {
 
   /**
    * Return news request by section
-   * @param section
+   * @param section The Section of the News
    * @return Observable<any>
    */
-  public getNews(section: string): Observable<any> {
-    return new Observable((Subscriber) =>
+  public getNews(section: string): Promise<IArticle[]> {
+    return new Promise((resolve, reject) =>
       forkJoin([this.getTheGuardian(section), this.getTheNewYorkTimes(section)]).subscribe((result: Array<object[]>) => {
-        let list: IArticle[] = [];
+        const list: IArticle[] = [];
         // The guardian response
         result[0].map((guardian: any) => {
           list.push({
             title: guardian.webTitle,
             text: guardian.fields.trailText,
             date: guardian.webPublicationDate,
-            section: guardian.sectionId
+            section: guardian.sectionId,
+            author: guardian.byline
           });
         });
         // The New York Times response
@@ -40,37 +41,42 @@ export class NewsService {
             title: newyorktimes.title,
             text: newyorktimes.abstract,
             date: newyorktimes.published_date,
-            section: newyorktimes.section
+            section: newyorktimes.section,
+            author: newyorktimes.byline
           });
         });
-      })
+        resolve(list);
+      },
+        error => {
+          reject(error);
+        })
     );
   }
 
   /**
    * Return The Guardian news by section
-   * @param section 
+   * @param section The Section of the News
    * @return Observable<any>
    */
   public getTheGuardian(section: string): Observable<any> {
     let params: HttpParams = new HttpParams();
-    params = params.append('api-key', environment.theguardian);
-    params = params.append('show-fields', 'trail-text');
+    params = params.append('api-key', environment.keys.theguardian);
+    params = params.append('show-fields', 'trail-text,byline');
     return this.http.get(this.theguardianapis + section, { params }).pipe(map((data: any) =>
       data.response.results
-    ))
+    ));
   }
 
   /**
    * Return The New York Time news by section
-   * @param section 
+   * @param section The Section of the News
    * @return Observable<any>
    */
   public getTheNewYorkTimes(section: string): Observable<any> {
     let params: HttpParams = new HttpParams();
-    params = params.append('api-key', environment.newyorktimes);
+    params = params.append('api-key', environment.keys.newyorktimes);
     params = params.append('limit', '10');
-    return this.http.get(this.newyorktimesapis + section + '.json', { params }).pipe(map((data: any) => data.results))
+    return this.http.get(this.newyorktimesapis + section + '.json', { params }).pipe(map((data: any) => data.results));
   }
 
 
