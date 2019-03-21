@@ -3,7 +3,6 @@ import { NewsService } from 'src/app/service/news.service';
 import { ISection } from 'src/app/interface/sections.interface';
 import { environment } from 'src/environments/environment';
 import { IArticle } from 'src/app/interface/article.interface';
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -21,6 +20,6 @@ export class HomeComponent implements OnInit {
         article.map(r => this.articles.push(r))
       );
     });
-    console.log(this.articles)
+    this.articles.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
   }
 }

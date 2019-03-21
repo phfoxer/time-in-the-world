@@ -1,12 +1,3 @@
 <div class="content">
-  <article *ngFor="let article of articles" class="article-short">
-    <h2>
-      <a [routerLink]="['/2019/01/01/test-test']">{{article.title}}</a>
-    </h2>
-    <a [routerLink]="['/2019/01/01/test-test']">
-      <img [src]="article.thumbnail" alt="">
-    </a>
-    <small>{{article.date | date: 'dd/MM/yyyy'}}</small><br />
-    <small>By {{article.author}}</small>
-  </article>
+  <app-article-item class="article-item" *ngFor="let article of articles" [article]="article"></app-article-item>
 </div>

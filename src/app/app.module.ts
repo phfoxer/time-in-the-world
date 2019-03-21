@@ -3,16 +3,17 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './routes.module';
+import { HelperClass } from './helper/helper.class';
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
-  providers: [HttpClientModule],
+  providers: [HttpClientModule, HelperClass],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

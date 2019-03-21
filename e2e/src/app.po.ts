@@ -5,7 +5,19 @@ export class AppPage {
     return browser.get('/');
   }
 
-  getParagraphText() {
-    return element(by.css('app-root h1')).getText();
+  getWebSiteTitle() {
+    return element(by.tagName('header')).getText();
+  }
+
+  navigateToSectionPage() {
+    return browser.get('/section/world');
+  }
+
+  verifySectionPage() {
+    return element(by.id('sectionName')).getText();
+  }
+
+  moreThanThree() {
+    return element.all(by.tagName('app-article-item')).count();
   }
 }

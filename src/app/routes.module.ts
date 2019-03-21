@@ -8,11 +8,11 @@ const route: Routes = [
     },
     {
         path: 'section/:section',
-        loadChildren: './pages/section/section.module#SectionModule',
+        loadChildren: './pages/section/section.module#SectionModule'
     },
     {
-        path: ':year/:month/:day/:title',
-        loadChildren: './pages/article/article.module#ArticleModule',
+        path: ':section/:year/:month/:day/:title',
+        loadChildren: './pages/article/article.module#ArticleModule'
     }
 ];
 

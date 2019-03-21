@@ -1,7 +1,8 @@
-import { TestBed, inject } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { NewsService } from './news.service';
 import { environment } from 'src/environments/environment';
+import { HelperClass } from '../helper/helper.class';
 
 describe('NewsService', () => {
 
@@ -11,7 +12,7 @@ describe('NewsService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [NewsService]
+      providers: [NewsService, HelperClass]
     });
     service = TestBed.get(NewsService);
     httpMock = TestBed.get(HttpTestingController);

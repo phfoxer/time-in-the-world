@@ -4,6 +4,7 @@ import { forkJoin, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { map } from 'rxjs/operators';
 import { IArticle } from '../interface/article.interface';
+import { HelperClass } from '../helper/helper.class';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ import { IArticle } from '../interface/article.interface';
 export class NewsService {
   public theguardianapis: string;
   public newyorktimesapis: string;
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private helper: HelperClass) {
     this.theguardianapis = 'https://content.guardianapis.com/';
     this.newyorktimesapis = 'https://api.nytimes.com/svc/news/v3/content/nyt/';
   }
@@ -34,7 +35,8 @@ export class NewsService {
             image: (guardian.fields.thumbnail) ? guardian.fields.thumbnail : null,
             date: guardian.webPublicationDate,
             section: guardian.sectionId,
-            author: guardian.fields.byline
+            author: guardian.fields.byline,
+            url: this.helper.toFriendlyUrl(guardian.webTitle, guardian.webPublicationDate)
           });
         });
         // The New York Times response
@@ -46,7 +48,8 @@ export class NewsService {
             image: (newyorktimes.multimedia.length > 0) ? newyorktimes.multimedia[3].url : null,
             date: newyorktimes.published_date,
             section: newyorktimes.section,
-            author: newyorktimes.byline
+            author: newyorktimes.byline,
+            url: this.helper.toFriendlyUrl(newyorktimes.title, newyorktimes.published_date)
           });
         });
         observer.next(list);

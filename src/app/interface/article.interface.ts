@@ -6,4 +6,5 @@ export interface IArticle {
     date: Date;
     section: string;
     author: string;
+    url: string;
 }

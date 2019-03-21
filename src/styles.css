@@ -1,1 +1,42 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+   font-family: Arial, Helvetica, sans-serif;
+}
+a {
+    text-decoration: none;
+}
+header {
+    width: 100%;
+    text-align: center;
+    font-size: 28px;
+}
+nav > ul {
+    width: 100%;
+    font-size: 14px;
+    text-decoration: none;
+    border-bottom: 1px solid #000;
+}
+nav > ul > li {
+    text-align: left;
+    padding: 5px 15px;
+    font-size: 14px;
+    display: inline-block;
+    border-right: 1px solid #e8e8e8;
+}
+nav > ul > li:hover {
+    background-color:#e8e8e8
+}
+nav > ul > li a {
+    color: #000;
+    text-transform: uppercase;
+}
+.content {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.article-item {
+    width: 25%;
+}
+footer{
+    clear: both;
+}
