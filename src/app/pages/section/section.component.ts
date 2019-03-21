@@ -12,21 +12,16 @@ import { ISection } from 'src/app/interface/sections.interface';
   providers: [NewsService, HelperClass]
 })
 export class SectionComponent implements OnInit {
-  articles: IArticle[];
+  articles: IArticle[] = [];
   section: ISection;
   constructor(private newsService: NewsService, private route: ActivatedRoute, private helper: HelperClass) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.section = this.helper.getSectionById(params['section']);
-      this.setSection(params['section']);
-    });
-  }
-
-  setSection(section: string) {
-    this.newsService.getNews(section).subscribe((articles: IArticle[]) => {
-      console.log(articles);
-      this.articles = articles;
+      this.newsService.getNews(params['section']).subscribe((articles: IArticle[]) => {
+        this.articles = articles;
+      });
     });
   }
 }

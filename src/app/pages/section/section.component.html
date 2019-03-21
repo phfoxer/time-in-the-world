@@ -1,4 +1,4 @@
-<h1 id="sectionName">{{section.name}}</h1>
+<h1 *ngIf="section" id="sectionName">{{section.name}}</h1>
 <div class="content">
   <app-article-item class="article-item" *ngFor="let article of articles" [article]="article"></app-article-item>
 </div>

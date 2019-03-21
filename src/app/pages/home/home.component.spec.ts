@@ -17,10 +17,11 @@ describe('HomeComponent', () => {
     TestBed.configureTestingModule({
       imports: [RouterTestingModule, HttpClientTestingModule],
       declarations: [HomeComponent, ArticleItemComponent],
-      providers: [HelperClass, ArticleItemComponent]
+      providers: [HelperClass, ArticleItemComponent, HomeComponent]
     })
       .compileComponents();
     service = TestBed.get(NewsService);
+    component = TestBed.get(HomeComponent);
     articleItemComponent = TestBed.get(ArticleItemComponent);
   }));
 
@@ -28,6 +29,10 @@ describe('HomeComponent', () => {
     fixture = TestBed.createComponent(HomeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+  });
+
+  it('The method ngOnInit is defined', () => {
+    expect(component.ngOnInit).toBeDefined();
   });
 
   it('Articles is done', () => {

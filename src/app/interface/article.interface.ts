@@ -1,4 +1,5 @@
 export interface IArticle {
+    id: string;
     text: string;
     title: string;
     thumbnail?: string;
@@ -7,4 +8,5 @@ export interface IArticle {
     section: string;
     author: string;
     url: string;
+    origin: string;
 }
