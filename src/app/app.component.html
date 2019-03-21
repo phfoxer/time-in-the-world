@@ -6,8 +6,9 @@
     </header>
 
     <nav>
-        <ul>
-            <li *ngFor="let section of sections"><a [routerLink]="['/section/' + section.sectionId]">{{section.name}}</a>
+        <ul id="navigate">
+            <li *ngFor="let section of sections">
+                <a [routerLink]="['/section/' + section.sectionId]" [id]="section.sectionId">{{section.name}}</a>
             </li>
         </ul>
     </nav>

@@ -10,7 +10,8 @@ export class AppPage {
   }
 
   navigateToSectionPage() {
-    return browser.get('/section/world');
+    this.navigateTo();
+    element.all(by.id('navigate')).first().first().click();
   }
 
   verifySectionPage() {
