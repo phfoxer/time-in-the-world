@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ArticleComponent } from './article.component';
+import { HelperClass } from 'src/app/helper/helper.class';
 
 describe('SectionComponent', () => {
   let component: ArticleComponent;
@@ -11,7 +12,7 @@ describe('SectionComponent', () => {
     TestBed.configureTestingModule({
       imports: [RouterTestingModule, HttpClientTestingModule],
       declarations: [ArticleComponent],
-      providers: [ArticleComponent]
+      providers: [ArticleComponent, HelperClass]
     })
       .compileComponents();
     component = TestBed.get(ArticleComponent);

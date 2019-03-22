@@ -16,7 +16,6 @@ export class ArticleComponent implements OnInit {
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
       this.newsService.getNewsById(decodeURIComponent(params.id), params.origin).subscribe(result => {
-        console.log(result);
         this.article = result;
       });
     });
