@@ -1,6 +1,7 @@
 # The TW News
 
 This project was generated with Angular version 7.0.3. 
+Requires Node 8 or higher
 Developed by Paulo Henrique Santos
 paulohs.dev@gmail.com
 
