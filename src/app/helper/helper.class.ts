@@ -24,9 +24,9 @@ export class HelperClass {
      * @return string
      */
     public toFriendlyUrl(str: string, date: Date): string {
-        const d: Date = new Date(date);
-        const s = d.getFullYear() + '/' + Number(d.getMonth() + 1).toString() + '/' + d.getDate() + '/';
-        return s + str.toLowerCase().replace(/[^\w-]+/g, ' ').replace(/ /g, '-') + '.html';
+        const _date: Date = new Date(date);
+        const url = _date.getFullYear() + '/' + Number(_date.getMonth() + 1).toString() + '/' + _date.getDate() + '/';
+        return url + str.toLowerCase().replace(/[^\w-]+/g, ' ').replace(/ /g, '-') + '.html';
     }
 
     /**
@@ -53,10 +53,10 @@ export class HelperClass {
      */
     public getTheArticleObject(array: object[], origin: string): IArticle[] {
         const list: IArticle[] = [];
-        if (origin === 'nytimes') {
+        if (origin === environment.origins.nytimes) {
             array.map((data: any) => {
                 list.push({
-                    id: data.url,
+                    id: encodeURIComponent(data.url),
                     title: data.title,
                     text: data.abstract,
                     thumbnail: (data.multimedia.length > 0) ? data.multimedia[2].url : null,
@@ -68,10 +68,10 @@ export class HelperClass {
                     origin: origin
                 });
             });
-        } else if (origin === 'guardian') {
+        } else if (origin === environment.origins.guardian) {
             array.map((data: any) => {
                 list.push({
-                    id: data.id,
+                    id: encodeURIComponent(data.id),
                     title: data.webTitle,
                     text: data.fields.trailText,
                     thumbnail: (data.fields.thumbnail) ? data.fields.thumbnail : null,

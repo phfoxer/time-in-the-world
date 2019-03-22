@@ -24,20 +24,20 @@ describe('NewsService', () => {
 
   it('Get articles by NY Times Science section.', () => {
     const section = 'science';
-    service.getTheNewYorkTimes(section).subscribe(() => { });
+    service.getListTheNewYorkTimes(section).subscribe(() => { });
     // Test query string
     const query = '?api-key=' + environment.keys.newyorktimes + '&limit=10';
-    const request = httpMock.expectOne(service.newyorktimesapis + section + '.json' + query);
+    const request = httpMock.expectOne(service.newyorktimesapis + 'content/nyt/' + section + '.json' + query);
     // Test request type
     expect(request.request.method).toBe('GET');
   });
 
   it('Get articles by NY Times World section.', () => {
     const section = 'world';
-    service.getTheNewYorkTimes(section).subscribe(() => { });
+    service.getListTheNewYorkTimes(section).subscribe(() => { });
     // Test query string
     const query = '?api-key=' + environment.keys.newyorktimes + '&limit=10';
-    const request = httpMock.expectOne(service.newyorktimesapis + section + '.json' + query);
+    const request = httpMock.expectOne(service.newyorktimesapis + 'content/nyt/' + section + '.json' + query);
     // Test request type
     expect(request.request.method).toBe('GET');
   });
@@ -45,7 +45,7 @@ describe('NewsService', () => {
 
   it('Get articles by The Guardian Science section.', () => {
     const section = 'science';
-    service.getTheGuardian(section).subscribe(() => { });
+    service.getListTheGuardian(section).subscribe(() => { });
     // Test query string
     const query = '?api-key=' + environment.keys.theguardian + '&show-fields=trail-text,byline,body,thumbnail&page-size=10';
     const request = httpMock.expectOne(service.theguardianapis + section + query);
@@ -55,7 +55,7 @@ describe('NewsService', () => {
 
   it('Get articles by The Guardian World section.', () => {
     const section = 'world';
-    service.getTheGuardian(section).subscribe(() => { });
+    service.getListTheGuardian(section).subscribe(() => { });
     // Test query string
     const query = '?api-key=' + environment.keys.theguardian + '&show-fields=trail-text,byline,body,thumbnail&page-size=10';
     const request = httpMock.expectOne(service.theguardianapis + section + query);

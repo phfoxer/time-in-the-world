@@ -1,10 +1,14 @@
 <article class="article-short">
   <h2>
-    <a [routerLink]="['/' + article.section + '/' + article.url]">{{article.title}}</a>
+    <a 
+      [routerLink]="['/' + article.section + '/' + article.url]"
+      [queryParams]="{id: article.id, origin: article.origin}">{{article.title}}</a>
   </h2>
-  <a [routerLink]="['/' + article.section + '/' + article.url]">
+  <a 
+    [routerLink]="['/' + article.section + '/' + article.url]"
+    [queryParams]="{id: article.id, origin: article.origin}">
     <img [src]="article.thumbnail" alt="">
   </a>
   <small>{{article.date | date: 'dd/MM/yyyy HH:mm:ss'}}</small><br />
-  <small>By {{article.author}}</small>
+  <small>{{article.author}}</small>
 </article>

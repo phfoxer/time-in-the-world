@@ -1,3 +1,7 @@
-<p>
-  article works!
-</p>
+<article class="article-short">
+    <h2>{{article.title}}</h2>
+    <img [src]="article.image" alt="">
+    <p>{{article.text}}</p>
+    <small>{{article.date | date: 'dd/MM/yyyy HH:mm:ss'}}</small><br />
+    <small>{{article.author}}</small>
+</article>

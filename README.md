@@ -35,3 +35,9 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 TSLint is an extensible static analysis tool that checks TypeScript code for readability, maintainability, and functionality errors.
 
 Run `ng lint` to execute the tslint scan via [TSLint](https://palantir.github.io/tslint/).
+
+## Documentation
+
+TypeDoc converts comments in TypeScript source code into rendered HTML documentation or a JSON model. It is extensible and supports a variety of configurations. Available as a CLI or Node module.
+
+You can see the documentation in project root docs/typedoc/index.html, open in your browser.

@@ -1,0 +1,13 @@
+version: '3.1'
+
+services:
+   tw-news:
+    build:
+      context: .
+      dockerfile: dockerfile
+    container_name: tw-news
+    image: tw-news
+    ports:
+      - 4200:4200
+    volumes:
+      - ./server/:/usr/src/app
