@@ -7,12 +7,7 @@ paulohs.dev@gmail.com
 
 ## About the application
 
-Hello everyone, it's my better, I worked hard for this.
-
-I used Clear Code in this application because is the best way to coding.
-
-In all application he code is clear and commented.
-
+Hello everyone!
 Well, you can run `ng serve --o` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Build
